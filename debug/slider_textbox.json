@@ -67,7 +67,7 @@
                         24,
                         20
                     ],
-                    "text": "#text",
+                    "text": "test",
                     "bindings": [
                         {
                             "source_control_name": "Slider_count",
@@ -77,8 +77,8 @@
                         },
                         {
                             "binding_type": "view",
-                            "source_property_name": "('T' + #val)",
-                            "target_property_name": "#text"
+                            "source_property_name": "(#val > 10)",
+                            "target_property_name": "#visible"
                         }
                     ]
                 }
