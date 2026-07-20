@@ -1,0 +1,10 @@
+
+ADD THIS TO UI_DEFS: 
+        "ui/bp_common/common.json",
+        // 
+        "ui/bp_common/debug/handler.json",
+        "ui/bp_common/debug/control_ids.json",
+        "ui/bp_common/debug/animated_button.json",
+        "ui/bp_common/debug/slider_textbox.json",
+        "ui/bp_common/debug/selection_wheel.json",
+        // 
