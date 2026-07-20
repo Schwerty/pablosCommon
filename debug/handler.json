@@ -1,0 +1,141 @@
+{
+    "namespace": "BP_COMMON_debug_handler",
+    "page_stack": {
+        "type": "stack_panel",
+        "orientation": "vertical",
+        "size": [
+            "100%",
+            "100%c"
+        ],
+        "controls": [
+            {
+                "control_ids@BP_COMMON_debug_handler.page": {
+                    "$page_name": "DEBUG_control_ids",
+                    "$page_content": "BP_DEBUG_control_ids.main"
+                }
+            },
+            {
+                "control_ids@BP_COMMON_debug_handler.page": {
+                    "$page_name": "DEBUG_animated_button",
+                    "$page_content": "BP_DEBUG_animated_button.main"
+                }
+            },
+            {
+                "slider_textbox@BP_COMMON_debug_handler.page": {
+                    "$page_name": "DEBUG_slider_textbox",
+                    "$page_content": "BP_DEBUG_slider_textbox.main"
+                }
+            },
+            {
+                "selection_wheel@BP_COMMON_debug_handler.page": {
+                    "$page_name": "DEBUG_selection_wheel",
+                    "$page_content": "BP_DEBUG_selection_wheel.main"
+                }
+            }
+        ]
+    },
+    "DEBUG_PAGE_TOGGLE_TEXT": {
+        "type": "label",
+        "size": [
+            "default",
+            "default"
+        ],
+        "layer": 2,
+        "text": "$page_name"
+    },
+    "DEBUG_PAGE_CLOSE@BP_COMMON.toggle": {
+        "radio_toggle_group": true,
+        "toggle_name": "Debug_toggle_group",
+        "toggle_group_default_selected": 0,
+        "toggle_default_state": true,
+        "toggle_group_forced_index": 0,
+        "size": [
+            0,
+            0
+        ],
+        "button_mappings": [
+            {
+                "from_button_id": "button.menu_cancel",
+                "to_button_id": "button.menu_select",
+                "mapping_type": "global"
+            }
+        ]
+    },
+    "DEBUG_PAGE_TOGGLE@BP_COMMON.toggle": {
+        "radio_toggle_group": true,
+        "toggle_group_forced_index": 1,
+        "toggle_name": "Debug_toggle_group",
+        "$extra_content": "BP_COMMON_debug_handler.DEBUG_PAGE_TOGGLE_TEXT",
+        "$button_texture_size": [
+            "100%c + 6px",
+            "100%c + 6px"
+        ],
+        "bindings": [
+            {
+                "source_control_name": "DEBUG_PAGE_CLOSE",
+                "source_property_name": "#toggle_state",
+                "target_property_name": "#visible",
+                "binding_type": "view"
+            }
+        ],
+        "$button_texture_max_size": [
+            140,
+            "100%c + 6px"
+        ],
+        "size": [
+            "100%c",
+            "100%c"
+        ]
+    },
+    "page@BP_COMMON.panel": {
+        "$page_name": "debug_test_page",
+        "$page_content": "BP_COMMON.image",
+        "use_anchored_offset": true,
+        "size": [
+            "100%",
+            "100%c"
+        ],
+        "controls": [
+            {
+                "$page_name@BP_COMMON_debug_handler.DEBUG_PAGE_TOGGLE": {
+                    "anchor_from": "top_left",
+                    "anchor_to": "top_left"
+                }
+            },
+            {
+                "contentholder@BP_COMMON.data_panel": {
+                    "bindings": [
+                        {
+                            "source_control_name": "$page_name",
+                            "source_property_name": "#toggle_state",
+                            "target_property_name": "#visible",
+                            "binding_type": "view"
+                        }
+                    ],
+                    "controls": [
+                        {
+                            "content@$page_content": {}
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "main": {
+        "type": "panel",
+        "size": [
+            "100%",
+            "100%"
+        ],
+        "anchor_from": "center",
+        "anchor_to": "center",
+        "controls": [
+            {
+                "page_stack@BP_COMMON_debug_handler.page_stack": {}
+            },
+            {
+                "DEBUG_PAGE_CLOSE@BP_COMMON_debug_handler.DEBUG_PAGE_CLOSE": {}
+            }
+        ]
+    }
+}

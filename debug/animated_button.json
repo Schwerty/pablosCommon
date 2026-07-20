@@ -1,0 +1,122 @@
+{
+    "namespace": "BP_DEBUG_animated_button",
+    "main": {
+        "type": "input_panel",
+        "size": [
+            300,
+            300
+        ],
+        "button_mappings": [
+            {
+                "from_button_id": "button.menu_secondary_select",
+                "to_button_id": "test",
+                "scope": "global",
+                "mapping_type": "global",
+                "consume_event": false
+            },
+            {
+                "from_button_id": "test",
+                "to_button_id": "test2",
+                "mapping_type": "global",
+                "consume_event": false
+            }
+        ],
+        "controls": [
+            {
+                "main_2@main_2": {
+                    "anchor_from": "top_middle",
+                    "anchor_to": "top_middle"
+                }
+            },
+            {
+                "toggle_visible_test_anim@BP_COMMON.toggle": {
+                    "size": [
+                        24,
+                        24
+                    ],
+                    "offset": [
+                        0,
+                        32
+                    ]
+                }
+            },
+            {
+                "test_anim": {
+                    "type": "button",
+                    "button_mappings": [
+                        {
+                            "to_button_id": "testrr",
+                            "mapping_type": "pressed"
+                        }
+                    ],
+                    "size": [
+                        12,
+                        12
+                    ],
+                    "controls": [
+                        {
+                            "test": {
+                                "type": "image",
+                                "size": [
+                                    12,
+                                    12
+                                ],
+                                "animation_reset_name": "testrr",
+                                "texture": "textures/ui/White",
+                                "bindings": [
+                                    {
+                                        "source_control_name": "toggle_visible_test_anim",
+                                        "binding_type": "view",
+                                        "source_property_name": "#toggle_state",
+                                        "target_property_name": "#visible"
+                                    }
+                                ],
+                                "anims": [
+                                    {
+                                        "alphaIn": {
+                                            "anim_type": "alpha",
+                                            "from": 0.3,
+                                            "to": 1,
+                                            "duration": 0.2
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "main_2@common.button": {
+        "size": [
+            100,
+            20
+        ],
+        "hover_enabled": false,
+        "controls": [
+            {
+                "stay": {
+                    "type": "image",
+                    "texture": "textures/ui/White",
+                    "animation_reset_name": "test2",
+                    "anims": [
+                        {
+                            "alphaIn": {
+                                "anim_type": "alpha",
+                                "from": 0.3,
+                                "to": 1,
+                                "duration": 0.2
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "default": {
+                    "type": "panel"
+                }
+            }
+        ]
+    }
+}

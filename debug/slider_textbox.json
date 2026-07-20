@@ -1,0 +1,88 @@
+{
+    "namespace": "BP_DEBUG_slider_textbox",
+    "count_t_box@common.text_edit_box": {
+        "size": [
+            24,
+            20
+        ],
+        "$text_edit_box_content_binding_name": "#count_t_bind",
+        "$text_alignment": "center",
+        "max_length": 3,
+        "$wrap": false,
+        "text_type": "NumberChars",
+        "$focus_override_up": "FOCUS_OVERRIDE_STOP"
+    },
+    "count_slider@common.empty_panel": {
+        "size": [
+            24,
+            "100%c"
+        ],
+        "controls": [
+            {
+                "Slider_count@common.slider": {
+                    "size": [
+                        12,
+                        128
+                    ],
+                    "$slider_name": "Slider_count",
+                    "$slider_value_binding_name": "#custom_slider_value",
+                    "$slider_tts_text_value": "#custom_slider_text_value",
+                    "anchor_from": "top_middle",
+                    "anchor_to": "top_middle",
+                    "$slider_direction": "vertical",
+                    "layer": 99,
+                    "slider_inverted": true,
+                    "$slider_box_size": [
+                        16,
+                        10
+                    ],
+                    "$progress_clip_direction": "down",
+                    "$slider_progress_color": [
+                        1,
+                        0.5,
+                        1
+                    ]
+                }
+            }
+        ]
+    },
+    "main": {
+        "type": "stack_panel",
+        "size": [
+            24,
+            "100%c"
+        ],
+        "orientation": "vertical",
+        "controls": [
+            {
+                "count_t_box@BP_DEBUG_slider_textbox.count_t_box": {}
+            },
+            {
+                "count_slidera@BP_DEBUG_slider_textbox.count_slider": {}
+            },
+            {
+                "test_l": {
+                    "type": "label",
+                    "size": [
+                        24,
+                        20
+                    ],
+                    "text": "#text",
+                    "bindings": [
+                        {
+                            "source_control_name": "Slider_count",
+                            "binding_type": "view",
+                            "source_property_name": "#custom_slider_value",
+                            "target_property_name": "#val"
+                        },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "('T' + #val)",
+                            "target_property_name": "#text"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

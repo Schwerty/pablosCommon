@@ -1,0 +1,34 @@
+{
+    "namespace": "BP_DEBUG_control_ids",
+
+    "A": {
+        "type": "image",
+        "size": [16,16],
+        "texture": "textures/items/apple"
+    },
+    "B": {
+        "type": "image",
+        "size": [16,16],
+        "texture": "textures/items/diamond"
+    },
+
+    "main": {
+        "type": "stack_panel",
+        "size": ["100%cm","100%c"],
+        "property_bag": {
+            "#collection_length": ["A", "B", "B", "B", "A"]
+        },
+        "bindings": [
+            {
+                "binding_name": "#collection_length"
+            }
+        ],
+        "factory": {
+            "name": "ttest",
+            "control_ids": {
+                "A": "@BP_DEBUG_control_ids.A",
+                "B": "@BP_DEBUG_control_ids.B"
+            }
+        }
+    }
+}

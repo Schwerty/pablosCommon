@@ -1,0 +1,97 @@
+{
+    "namespace": "BP_DEBUG_selection_wheel",
+    "main": {
+        "type": "selection_wheel",
+        "size": [
+            64,
+            64
+        ],
+        "always_handle_controller_direction": true,
+        "slice_count": 4,
+        "inner_radius": 0.0,
+        "outer_radius": 1.0,
+        "layer": 1,
+        "sound_name": "random.click",
+        "sound_volume": 1.0,
+        "sound_pitch": 1.0,
+        "controls": [
+            {
+                "test1": {
+                    "type": "image",
+                    "size": [
+                        "100%",
+                        "100%"
+                    ],
+                    "texture": "textures/ui/emote_wheel_updated_base"
+                }
+            },
+            {
+                "test2": {
+                    "type": "image",
+                    "size": [
+                        "100%",
+                        "100%"
+                    ],
+                    "texture": "textures/ui/emote_wheel_updated_select_0"
+                }
+            },
+            {
+                "test3": {
+                    "type": "image",
+                    "size": [
+                        "100%",
+                        "100%"
+                    ],
+                    "texture": "textures/ui/emote_wheel_updated_select_1"
+                }
+            },
+            {
+                "test4": {
+                    "type": "image",
+                    "size": [
+                        "100%",
+                        "100%"
+                    ],
+                    "texture": "textures/ui/emote_wheel_updated_select_2"
+                }
+            },
+            {
+                "test5": {
+                    "type": "image",
+                    "size": [
+                        "100%",
+                        "100%"
+                    ],
+                    "texture": "textures/ui/emote_wheel_updated_select_3"
+                }
+            }
+        ],
+        "state_controls": [
+            {
+                "control_name": "test1"
+            },
+            {
+                "control_name": "test2"
+            },
+            {
+                "control_name": "test3"
+            },
+            {
+                "control_name": "test4"
+            },
+            {
+                "control_name": "test5"
+            }
+        ],
+        "button_mappings": [],
+        "property_bag": {
+            "#hover_slice": 0
+        },
+        "bindings": [
+            {
+                "binding_name": "#init_selection_wheel_input_mode",
+                "binding_condition": "once"
+            }
+        ]
+    }
+}
