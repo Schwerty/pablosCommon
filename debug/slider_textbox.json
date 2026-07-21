@@ -20,12 +20,21 @@
           "anchor_to": "top_middle",
           "$slider_direction": "vertical",
           "layer": 99,
+          "$slider_value_binding_name": "#content_tier_value",
           "$slider_steps|default": 30,
           "$slider_value|default": 2,
           "property_bag": {
             "#slider_value": "$slider_value",
             "#slider_steps": "$slider_steps"
           },
+          "bindings": [
+            {
+              "binding_name": "#slider_value"
+            },
+            {
+              "binding_name": "#slider_steps"
+            }
+          ],
           "slider_inverted": true,
           "$slider_box_size": [16, 10],
           "$progress_clip_direction": "down",
