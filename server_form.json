@@ -1,0 +1,109 @@
+{
+  "namespace": "BP_COMMON_server_form",
+
+  // Edit these:
+
+  "forms_modal@BP_COMMON.panel": {
+    "controls": [
+      {
+        "dingsel@dynamic_form_name": {
+          "$content": "BP_COMMON.image",
+          "$flag": "dingsel"
+        }
+      }
+    ]
+  },
+
+  "forms_long@BP_COMMON.panel": {
+    "controls": [
+      {
+        "dingsel@dynamic_form_name": {
+          "$content": "BP_COMMON.image",
+          "$flag": "dingsel"
+        }
+      }
+    ]
+  },
+  // Use these
+
+  "HANDLE_MODAL_FORMS@BP_COMMON_server_form.forms_handler": {
+    "$other_forms": "BP_COMMON_server_form.forms_modal",
+    "$default_content": "server_form.custom_form"
+  },
+
+  "HANDLE_LONG_FORMS@BP_COMMON_server_form.forms_handler": {
+    "$form_prefix": "",
+    "$other_forms": "BP_COMMON_server_form.forms_long",
+    "$default_content": "server_form.long_form"
+  },
+
+  //
+  "forms_handler@BP_COMMON.panel": {
+    "$form_prefix|default": "BP_OUTBREAK_",
+    "$other_forms|default": "",
+    "$default_content|default": "",
+    "controls": [
+      {
+        "other@$other_forms": {}
+      },
+      {
+        "default@dynamic_default_form": {
+          "$content": "$default_content"
+        }
+      }
+    ]
+  },
+  "closeable_global_button": {
+    "type": "button",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_exit",
+        "mapping_type": "global"
+      }
+    ]
+  },
+  "dynamic_default_form@BP_COMMON.panel": {
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#title_text - $form_prefix) = #title_text)",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "content@$content": {}
+      },
+      {
+        "closeable@closeable_global_button": {}
+      }
+    ]
+  },
+  "dynamic_form_name@BP_COMMON.panel": {
+    "$closable|default": true,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(($form_prefix + $flag) = #title_text)",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "content@$content": {}
+      },
+      {
+        "closeable@closeable_global_button": {
+          "visible": "$closable"
+        }
+      }
+    ]
+  }
+}
