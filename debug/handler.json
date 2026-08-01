@@ -31,6 +31,12 @@
                     "$page_name": "DEBUG_selection_wheel",
                     "$page_content": "BP_DEBUG_selection_wheel.main"
                 }
+            },
+            {
+                "string_length@BP_COMMON_debug_handler.page": {
+                    "$page_name": "DEBUG_string_length",
+                    "$page_content": "BP_DEBUG_string_length.main"
+                }
             }
         ]
     },

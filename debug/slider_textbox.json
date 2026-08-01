@@ -44,54 +44,21 @@
     ]
   },
   "main": {
-    "type": "stack_panel",
-    "size": [24, "100%c"],
-    "orientation": "vertical",
+    "type": "image",
+    "size": [334, 221],
+    "texture": "test/book2",
     "controls": [
       {
-        "count_t_box@BP_DEBUG_slider_textbox.count_t_box": {}
-      },
-      {
-        "count_slidera@BP_DEBUG_slider_textbox.count_slider": {}
-      },
-      {
-        "test_l": {
-          "type": "label",
-          "size": [24, 20],
-          "text": "#text",
-          "bindings": [
-            {
-              "source_control_name": "slider_count",
-              "binding_type": "view",
-              "source_property_name": "#slider_value",
-              "target_property_name": "#val"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(10*((#val > 9) + (#val > 19) + (#val > 29) + (#val > 39) + (#val > 49) + (#val > 59) + (#val > 69) + (#val > 79) + (#val > 89)))",
-              "target_property_name": "#tenner"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#val - #tenner)",
-              "target_property_name": "#onner"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "((#onner > 0) + (#onner > 1) + (#onner > 2) + (#onner > 3) + (#onner > 4) + (#onner > 5) + (#onner > 6) + (#onner > 7) + (#onner > 8))",
-              "target_property_name": "#onner_dig"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#onner_dig + #tenner + 1)",
-              "target_property_name": "#digit"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "('§r' + #digit)",
-              "target_property_name": "#text"
-            }
-          ]
+        "toggle@BP_COMMON.toggle": {
+          "$default_texture|default": "test/book_d",
+          "$hover_texture|default": "test/book_h",
+          "$pressed_hover_texture|default": "test/book_p",
+          "sound_name": "bundle.insert",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [69,-2],
+          "$pressed_texture|default": "test/book_p",
+          "size": [32, 48]
         }
       }
     ]

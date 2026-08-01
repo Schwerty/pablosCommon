@@ -1,0 +1,274 @@
+{
+  "namespace": "BP_COMMON_custom_font_text",
+
+  "symbol_grid_item@BP_COMMON.panel": {
+    "$symbol_size|default": [5, 5],
+    "$symbol_image_size|default": [5, 5],
+    "$shadow|default": false,
+    "size": "$symbol_size",
+    "controls": [
+      {
+        "symbol_texture_shadow": {
+          "type": "image",
+          "visible": "$shadow",
+          "color": [0.3, 0.3, 0.3],
+          "offset": [1,1],
+          "size": "$symbol_image_size",
+          "texture": "#texture",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "$text"
+            },
+            {
+              "binding_name": "#collection_index",
+              "binding_type": "$text",
+              "binding_collection_name": "items_grid"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('BPREMPREFIX:' + (('%.' + #collection_index + 's') * $text))",
+              "target_property_name": "#remove"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('%.2s' * (('_BPREMPREFIX:' + $text) - #remove))",
+              "target_property_name": "#symbol"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('ui/bp_common/fonts_textures/' + $font + '/I' + #symbol)",
+              "target_property_name": "#texture"
+            }
+          ]
+        }
+      },
+      {
+        "symbol_texture": {
+          "type": "image",
+          "size": "$symbol_image_size",
+          "texture": "#texture",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "$text"
+            },
+            {
+              "binding_name": "#collection_index",
+              "binding_type": "$text",
+              "binding_collection_name": "items_grid"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('BPREMPREFIX:' + (('%.' + #collection_index + 's') * $text))",
+              "target_property_name": "#remove"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('%.2s' * (('_BPREMPREFIX:' + $text) - #remove))",
+              "target_property_name": "#symbol"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('ui/bp_common/fonts_textures/' + $font + '/I' + #symbol)",
+              "target_property_name": "#texture"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "SYMBOL@BP_COMMON.panel": {
+    "$symbol|default": "1",
+    "$font|default": "five",
+    "$symbol_bind_source|default": "symbol_texture",
+    "$symbol_bind_property|default": "#default_symbol_bind",
+    "$symbol_image_size|default": [5, 5],
+    "$shadow|default": false,
+    "controls": [
+      {
+        "symbol_texture_shadow": {
+          "type": "image",
+          "visible": "$shadow",
+          "size": "$symbol_image_size",
+          "property_bag": {
+            "#default_symbol_bind": "$symbol"
+          },
+          "color": [0.3, 0.3, 0.3],
+          "offset": [1, 1],
+          "texture": "#texture",
+          "bindings": [
+            {
+              "source_control_name": "$symbol_bind_source",
+              "binding_type": "view",
+              "source_property_name": "('ui/bp_common/fonts_textures/' + $font + '/I_' + $symbol_bind_property)",
+              "target_property_name": "#texture"
+            }
+          ]
+        }
+      },
+      {
+        "symbol_texture": {
+          "type": "image",
+          "size": "$symbol_image_size",
+          "property_bag": {
+            "#default_symbol_bind": "$symbol"
+          },
+          "texture": "#texture",
+          "bindings": [
+            {
+              "source_control_name": "$symbol_bind_source",
+              "binding_type": "view",
+              "source_property_name": "('ui/bp_common/fonts_textures/' + $font + '/I_' + $symbol_bind_property)",
+              "target_property_name": "#texture"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "main": {
+    "type": "grid",
+    "size": ["100%", "100%"],
+    "$text|default": "Hello World!",
+    "$font|default": "five",
+    "$symbol_size|default": [5, 5],
+    "$symbol_image_size|default": [5, 5],
+    "property_bag": {
+      "#p": "CALC_PREFIX:",
+      "#text_t": "$text"
+    },
+    "collection_name": "$text",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_property_name": "#text_t",
+        "target_property_name": "#in"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#p + #in)",
+        "target_property_name": "#inp"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp - ('%.21s' * #inp)) = '')",
+        "target_property_name": "#d10_1"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp - ('%.31s' * #inp)) = '')",
+        "target_property_name": "#d10_2"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp - ('%.41s' * #inp)) = '')",
+        "target_property_name": "#d10_3"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp - ('%.51s' * #inp)) = '')",
+        "target_property_name": "#d10_4"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp - ('%.61s' * #inp)) = '')",
+        "target_property_name": "#d10_5"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp - ('%.71s' * #inp)) = '')",
+        "target_property_name": "#d10_6"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp - ('%.81s' * #inp)) = '')",
+        "target_property_name": "#d10_7"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp - ('%.91s' * #inp)) = '')",
+        "target_property_name": "#d10_8"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp - ('%.101s' * #inp)) = '')",
+        "target_property_name": "#d10_9"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(90 - (#d10_1 + #d10_2 + #d10_3 + #d10_4 + #d10_5 + #d10_6 + #d10_7 + #d10_8 + #d10_9) * 10)",
+        "target_property_name": "#d10"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#inp - (#p + (('%.' + #d10 + 's') * #in)))",
+        "target_property_name": "#in_d1"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#p + #in_d1)",
+        "target_property_name": "#inp_d1"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp_d1 - ('%.12s' * #inp_d1)) = '')",
+        "target_property_name": "#d1_1"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp_d1 - ('%.13s' * #inp_d1)) = '')",
+        "target_property_name": "#d1_2"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp_d1 - ('%.14s' * #inp_d1)) = '')",
+        "target_property_name": "#d1_3"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp_d1 - ('%.15s' * #inp_d1)) = '')",
+        "target_property_name": "#d1_4"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp_d1 - ('%.16s' * #inp_d1)) = '')",
+        "target_property_name": "#d1_5"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp_d1 - ('%.17s' * #inp_d1)) = '')",
+        "target_property_name": "#d1_6"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp_d1 - ('%.18s' * #inp_d1)) = '')",
+        "target_property_name": "#d1_7"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp_d1 - ('%.19s' * #inp_d1)) = '')",
+        "target_property_name": "#d1_8"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#inp_d1 - ('%.20s' * #inp_d1)) = '')",
+        "target_property_name": "#d1_9"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(9 - (#d1_1 + #d1_2 + #d1_3 + #d1_4 + #d1_5 + #d1_6 + #d1_7 + #d1_8 + #d1_9))",
+        "target_property_name": "#d1"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#d1 + #d10)",
+        "target_property_name": "#maximum_grid_items"
+      }
+    ],
+    "grid_rescaling_type": "horizontal",
+    "grid_item_template": "BP_COMMON_custom_font_text.symbol_grid_item"
+  }
+}

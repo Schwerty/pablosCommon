@@ -7,5 +7,7 @@ ADD THIS TO UI_DEFS:
         "ui/bp_common/debug/animated_button.json",
         "ui/bp_common/debug/slider_textbox.json",
         "ui/bp_common/debug/selection_wheel.json",
+        "ui/bp_common/debug/string_length.json",
         // 
         "ui/bp_common/server_form.json",
+        "ui/bp_common/custom_font_text.json",
