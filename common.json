@@ -1,134 +1,139 @@
 {
-    "namespace": "BP_COMMON",
-    "panel": {
-        "type": "panel",
-        "size": [
-            "100%",
-            "100%"
-        ]
-    },
-    "data_panel@panel": {
-        "size": [
-            0,
-            0
-        ]
-    },
-    "image": {
-        "type": "image",
-        "texture": "textures/items/apple",
-        "size": [
-            16,
-            16
-        ]
-    },
-    "button_textures": {
-        "$default_texture|default": "textures/ui/button_borderless_dark",
-        "$hover_texture|default": "textures/ui/button_borderless_darkhover",
-        "$pressed_texture|default": "textures/ui/button_borderless_darkpressednohover",
-        "$pressed_hover_texture|default": "textures/ui/button_borderless_darkpressed",
-        "$extra_content|default": "BP_COMMON.panel",
-        "$button_texture_size|default": [
-            "100%",
-            "100%"
-        ],
-        "$button_texture_max_size|default": [
-            "100%",
-            "100%"
-        ],
-        "controls": [
+  "namespace": "BP_COMMON",
+  "panel": {
+    "type": "panel",
+    "size": ["100%", "100%"]
+  },
+  "data_panel@panel": {
+    "size": [0, 0]
+  },
+  "image": {
+    "type": "image",
+    "texture": "textures/items/apple",
+    "size": [16, 16]
+  },
+  "button_textures": {
+    "$default_texture|default": "textures/ui/button_borderless_dark",
+    "$hover_texture|default": "textures/ui/button_borderless_darkhover",
+    "$pressed_texture|default": "textures/ui/button_borderless_darkpressednohover",
+    "$pressed_hover_texture|default": "textures/ui/button_borderless_darkpressed",
+    "$extra_content|default": "BP_COMMON.panel",
+    "$button_texture_size|default": ["100%", "100%"],
+    "$button_texture_max_size|default": ["100%", "100%"],
+    "controls": [
+      {
+        "default@BP_COMMON.image": {
+          "size": "$button_texture_size",
+          "max_size": "$button_texture_max_size",
+          "layer": 1,
+          "controls": [
             {
-                "default@BP_COMMON.image": {
-                    "size": "$button_texture_size",
-                    "max_size": "$button_texture_max_size",
-                    "controls": [
-                        {
-                            "extra_content@$extra_content": {}
-                        }
-                    ],
-                    "texture": "$default_texture"
-                }
-            },
-            {
-                "hover@BP_COMMON.image": {
-                    "size": "$button_texture_size",
-                    "max_size": "$button_texture_max_size",
-                    "controls": [
-                        {
-                            "extra_content@$extra_content": {}
-                        }
-                    ],
-                    "texture": "$hover_texture"
-                }
-            },
-            {
-                "pressed@BP_COMMON.image": {
-                    "size": "$button_texture_size",
-                    "max_size": "$button_texture_max_size",
-                    "controls": [
-                        {
-                            "extra_content@$extra_content": {}
-                        }
-                    ],
-                    "texture": "$pressed_texture"
-                }
-            },
-            {
-                "pressed_hover@BP_COMMON.image": {
-                    "size": "$button_texture_size",
-                    "max_size": "$button_texture_max_size",
-                    "controls": [
-                        {
-                            "extra_content@$extra_content": {}
-                        }
-                    ],
-                    "texture": "$pressed_hover_texture"
-                }
+              "extra_content@$extra_content": {}
             }
-        ]
-    },
-    "toggle@button_textures": {
-        "type": "toggle",
-        "size": [
-            "100%",
-            "100%"
-        ],
-        "unchecked_control": "default",
-        "checked_control": "pressed",
-        "unchecked_hover_control": "hover",
-        "checked_hover_control": "pressed_hover",
-        "button_mappings": [
+          ],
+          "texture": "$default_texture"
+        }
+      },
+      {
+        "hover@BP_COMMON.image": {
+          "size": "$button_texture_size",
+          "max_size": "$button_texture_max_size",
+          "layer": 2,
+          "controls": [
             {
-                "from_button_id": "button.menu_select",
-                "to_button_id": "button.menu_select",
-                "mapping_type": "pressed"
-            },
-            {
-                "from_button_id": "button.menu_ok",
-                "to_button_id": "button.menu_ok",
-                "mapping_type": "focused"
+              "extra_content@$extra_content": {}
             }
-        ]
-    },
-    "button@button_textures": {
-        "type": "button",
-        "size": [
-            "100%",
-            "100%"
-        ],
-        "default_control": "default",
-        "hover_control": "hover",
-        "pressed_control": "pressed",
-        "button_mappings": [
+          ],
+          "texture": "$hover_texture"
+        }
+      },
+      {
+        "pressed@BP_COMMON.image": {
+          "size": "$button_texture_size",
+          "max_size": "$button_texture_max_size",
+          "layer": 3,
+          "controls": [
             {
-                "from_button_id": "button.menu_select",
-                "to_button_id": "button.menu_select",
-                "mapping_type": "pressed"
-            },
-            {
-                "from_button_id": "button.menu_ok",
-                "to_button_id": "button.menu_ok",
-                "mapping_type": "focused"
+              "extra_content@$extra_content": {}
             }
-        ]
-    }
+          ],
+          "texture": "$pressed_texture"
+        }
+      },
+      {
+        "pressed_hover@BP_COMMON.image": {
+          "size": "$button_texture_size",
+          "max_size": "$button_texture_max_size",
+          "layer": 4,
+          "controls": [
+            {
+              "extra_content@$extra_content": {}
+            }
+          ],
+          "texture": "$pressed_hover_texture"
+        }
+      },
+      {
+        "empty": {
+          "type": "panel",
+          "size": "$button_texture_size",
+          "max_size": "$button_texture_max_size"
+        }
+      }
+    ]
+  },
+  "toggle@button_textures": {
+    "type": "toggle",
+    "size": ["100%", "100%"],
+    "unchecked_control": "default",
+    "checked_control": "pressed",
+    "unchecked_hover_control": "hover",
+    "checked_hover_control": "pressed_hover",
+    "unchecked_locked_control": "default",
+    "checked_locked_control": "pressed",
+    "checked_locked_hover_control": "pressed_hover",
+    "unchecked_locked_hover_control": "hover",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_select",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.menu_ok",
+        "mapping_type": "focused"
+      }
+    ]
+  },
+  "button@button_textures": {
+    "type": "button",
+    "size": ["100%", "100%"],
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "pressed",
+
+    "$to_button_id|default": "button.menu_select",
+    "$button_scope|default": "view",
+
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "$to_button_id",
+        "handle_select": false,
+
+        "button_up_right_of_first_refusal": true,
+        "mapping_type": "pressed",
+        "scope": "$button_scope"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "$to_button_id",
+        "button_up_right_of_first_refusal": true,
+
+        "mapping_type": "focused",
+        "scope": "$button_scope"
+      }
+    ]
+  }
 }
