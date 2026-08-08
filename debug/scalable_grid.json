@@ -1,0 +1,303 @@
+{
+  "namespace": "BP_DEBUG_scalable_grid",
+
+  "size_scale": {
+    "anim_type": "size",
+    "from": [8, 8],
+    "to": [32, 32],
+    "play_event": "bp_scale_grid"
+  },
+
+  "update": {
+    "anim_type": "size",
+    "from": [7, 7],
+    "to": [16, 16],
+    "play_event": "bp_scale_grid"
+  },
+
+  "template": {
+    "type": "panel",
+    "size": [16, 16],
+    "$texture|default": "textures/items/apple",
+    "$collection_index|default": 0,
+    "$this": "('BP_SLOT_TEMPLATE_' + $collection_index)",
+    "controls": [
+      {
+        "$this": {
+          "type": "panel",
+          "size": [16, 16],
+
+          "bindings": [
+            {
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#updatestate",
+              "binding_type": "view",
+              "source_control_name": "toggleUPDATEGRID",
+              "binding_condition": "always"
+            },
+            {
+              "source_property_name": "((#how_many_before + (#showing * 1))  * ((#updatestate * 0) + 1))",
+              "target_property_name": "#bra",
+              "binding_type": "view",
+              "source_control_name": "DATA",
+              "resolve_sibling_scope": true,
+              "binding_condition": "always"
+            },
+            {
+              "source_property_name": "(#bra * ((#updatestate * 0) + 1))",
+              "target_property_name": "#how_many_now",
+              "binding_type": "view"
+            }
+          ]
+        }
+      },
+      {
+        "DATA": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "search_portfolio",
+              "source_property_name": "#item_name",
+              "target_property_name": "#search",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#search = '')",
+              "target_property_name": "#is_not_empty",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (($texture - #search) = $texture))",
+              "target_property_name": "#is_being_searched",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#is_not_empty or #is_being_searched or (not #updatestate))",
+              "target_property_name": "#showing",
+              "binding_condition": "always"
+            },
+            {
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#updatestate",
+              "binding_type": "view",
+              "source_control_name": "toggleUPDATEGRID",
+              "binding_condition": "always"
+            },
+            {
+              "source_property_name": "(#how_many_now * ((#updatestate * 0) + 1))",
+              "target_property_name": "#how_many_before",
+              "binding_type": "view",
+              "source_control_name": "('BP_SLOT_TEMPLATE_' + ($collection_index - 1))",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "dest": {
+          "type": "label",
+          "text": "#text",
+          "offset": [0, 0],
+          "layer": 100,
+          "use_anchored_offset": true,
+          "bindings": [
+            {
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#updatestate",
+              "binding_type": "view",
+              "source_control_name": "toggleUPDATEGRID",
+              "binding_condition": "always"
+            },
+            {
+              "source_control_name": "DATA",
+              "resolve_sibling_scope": true,
+              "source_property_name": "('§r' + #how_many_before + '|' + #showing * ((#updatestate * 0) + 1))",
+              "target_property_name": "#text",
+              "binding_type": "view",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "img": {
+          "type": "image",
+          "size": [16, 16],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "texture": "$texture",
+          "use_anchored_offset": true,
+
+          "property_bag": {
+            "#anchored_offset_value_x": 0.0,
+            "#anchored_offset_value_y": 0.0
+          },
+
+          "bindings": [
+            {
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#updatestate",
+              "binding_type": "view",
+              "source_control_name": "toggleUPDATEGRID",
+              "binding_condition": "always"
+            },
+            {
+              "source_property_name": "(#how_many_before * ((#updatestate * 0) + 1))",
+              "target_property_name": "#came_before",
+              "binding_type": "view",
+              "source_control_name": "DATA",
+              "resolve_sibling_scope": true
+            },
+            {
+              "source_property_name": "#showing",
+              "target_property_name": "#visible",
+              "binding_type": "view",
+              "source_control_name": "DATA",
+              "resolve_sibling_scope": true
+            },
+            {
+              "source_property_name": "(((#came_before - ((#came_before / 3) * 3)) * 1.0)  * ((#updatestate * 0) + 1))",
+              "target_property_name": "#anchored_offset_value_x",
+              "binding_type": "view",
+              "binding_condition": "always"
+            },
+            {
+              "source_property_name": "(((#came_before / 3) * 1.0)  * ((#updatestate * 0) + 1))",
+              "target_property_name": "#anchored_offset_value_y",
+              "binding_type": "view",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "main": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "controls": [
+      {
+        "toggleUPDATEGRID@BP_COMMON.toggle": {
+          "size": [32, 32],
+          "offset": [-60, 0]
+        }
+      },
+      {
+        "search_content@common.text_edit_box": {
+          "size": [120, 24],
+          "offset": [130, 0],
+          "$text_box_name": "portfolio_text_box",
+          "$text_edit_text_control": "search_portfolio",
+          "$place_holder_text": "Search..(Case sensitive)",
+
+          "$text_clear_button_enabled": true,
+          "$text_edit_box_clear_to_button_id": "button.search_bar_clear"
+        }
+      },
+      {
+        "BP_SLOT_TEMPLATE_-1": {
+          "type": "panel",
+          "property_bag": {
+            "#how_many_now": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#how_many_now"
+            }
+          ]
+        }
+      },
+      {
+        "grid_lol_actual_stackpanel": {
+          "type": "collection_panel",
+          "collection_name": "grid_resizable_collection",
+          "size": [16, 16],
+          "controls": [
+            {
+              "one1@template": {
+                "$collection_index": 0
+              }
+            },
+            {
+              "two2@template": {
+                "$collection_index": 1,
+                "$texture": "textures/items/stick"
+              }
+            },
+            {
+              "three3@template": {
+                "$collection_index": 2,
+                "$texture": "textures/items/iron_ingot"
+              }
+            },
+            {
+              "fou4r@template": {
+                "$collection_index": 3,
+                "$texture": "textures/blocks/dirt"
+              }
+            },
+            {
+              "five5@template": {
+                "$collection_index": 4,
+                "$texture": "textures/items/gold_ingot"
+              }
+            },
+            {
+              "six6@template": {
+                "$collection_index": 5,
+                "$texture": "textures/items/gold_sword"
+              }
+            },
+            {
+              "seven7@template": {
+                "$collection_index": 6,
+                "$texture": "textures/items/iron_sword"
+              }
+            },
+            {
+              "eight8@template": {
+                "$collection_index": 7,
+                "$texture": "textures/items/diamond_sword"
+              }
+            },
+            {
+              "nine9@template": {
+                "$collection_index": 8,
+                "$texture": "textures/items/diamond_axe"
+              }
+            },
+            {
+              "ten10@template": {
+                "$collection_index": 9,
+                "$texture": "textures/items/diamond_pickaxe"
+              }
+            },
+            {
+              "eleven11@template": {
+                "$collection_index": 10,
+                "$texture": "textures/items/diamond_axe"
+              }
+            },
+            {
+              "twelve12@template": {
+                "$collection_index": 11,
+                "$texture": "textures/blocks/dirt"
+              }
+            },
+            {
+              "thirteen13@template": {
+                "$collection_index": 12,
+                "$texture": "textures/items/apple"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
