@@ -129,6 +129,8 @@
       {
         "from_button_id": "button.menu_ok",
         "to_button_id": "$to_button_id",
+        "handle_select": false,
+
         "button_up_right_of_first_refusal": true,
 
         "mapping_type": "focused",
